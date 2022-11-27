@@ -1,0 +1,81 @@
+{
+    "keyboard_name": "mclaughlinconnor/baygullboard",
+    "maintainer": "mclaughlinconnor",
+    "bootloader": "caterina",
+    "features": {
+        "bootmagic": true,
+        "command": false,
+        "console": false,
+        "extrakey": true,
+        "mousekey": true,
+        "nkro": true
+    },
+    "processor": "atmega32u4",
+    "url": "",
+    "usb": {
+        "device_version": "1.0.0",
+        "pid": "0x0000",
+        "vid": "0xFEED"
+    },
+    "layouts": {
+        "LAYOUT_split_3x6_8": {
+            "layout": [
+                { "label": "L00 (D1,F6)", "x": 0, "y": 0 },
+                { "label": "L01 (D0,F6)", "x": 1, "y": 0 },
+                { "label": "L02 (D4,F6)", "x": 2, "y": 0 },
+                { "label": "L03 (C6,F6)", "x": 3, "y": 0 },
+                { "label": "L04 (D7,F6)", "x": 4, "y": 0 },
+                { "label": "L05 (E6,F6)", "x": 5, "y": 0 },
+
+                { "label": "R00 (E6,F6)", "x": 6, "y": 0 },
+                { "label": "R01 (D7,F6)", "x": 7, "y": 0 },
+                { "label": "R02 (C6,F6)", "x": 8, "y": 0 },
+                { "label": "R03 (D4,F6)", "x": 9, "y": 0 },
+                { "label": "R04 (D0,F6)", "x": 10, "y": 0 },
+                { "label": "R05 (D1,F6)", "x": 11, "y": 0 },
+
+                { "label": "L10 (D1,F7)", "x": 0, "y": 1 },
+                { "label": "L11 (D0,F7)", "x": 1, "y": 1 },
+                { "label": "L12 (D4,F7)", "x": 2, "y": 1 },
+                { "label": "L13 (C6,F7)", "x": 3, "y": 1 },
+                { "label": "L14 (D7,F7)", "x": 4, "y": 1 },
+                { "label": "L15 (E6,F7)", "x": 5, "y": 1 },
+
+                { "label": "R10 (E6,F7)", "x": 6, "y": 1 },
+                { "label": "R11 (D7,F7)", "x": 7, "y": 1 },
+                { "label": "R12 (C6,F7)", "x": 8, "y": 1 },
+                { "label": "R13 (D4,F7)", "x": 9, "y": 1 },
+                { "label": "R14 (D0,F7)", "x": 10, "y": 1 },
+                { "label": "R15 (D1,F7)", "x": 11, "y": 1 },
+
+                { "label": "L20 (D1,B1)", "x": 0, "y": 2 },
+                { "label": "L21 (D0,B1)", "x": 1, "y": 2 },
+                { "label": "L22 (D4,B1)", "x": 2, "y": 2 },
+                { "label": "L23 (C6,B1)", "x": 3, "y": 2 },
+                { "label": "L24 (D7,B1)", "x": 4, "y": 2 },
+                { "label": "L25 (E6,B1)", "x": 5, "y": 2 },
+
+                { "label": "R20 (E6,B1)", "x": 6, "y": 2 },
+                { "label": "R21 (D7,B1)", "x": 7, "y": 2 },
+                { "label": "R22 (C6,B1)", "x": 8, "y": 2 },
+                { "label": "R23 (D4,B1)", "x": 9, "y": 2 },
+                { "label": "R24 (D0,B1)", "x": 10, "y": 2 },
+                { "label": "R25 (D1,B1)", "x": 11, "y": 2 }
+
+                { "label": "L30 (F7,B3)", "x": 3, "y": 3 },
+                { "label": "L31 (F6,B3)", "x": 4, "y": 3 },
+                { "label": "L32 (B1,B3)", "x": 5, "y": 3 },
+                { "label": "L33 (F5,B3)", "x": 6, "y": 3 },
+                { "label": "L34 (B1,B3)", "x": 5, "y": 4 },
+                { "label": "L35 (F4,B3)", "x": 6, "y": 4 },
+
+                { "label": "R30 (F7,B3)", "x": 6, "y": 3 },
+                { "label": "R31 (F6,B3)", "x": 7, "y": 3 },
+                { "label": "R32 (B1,B3)", "x": 8, "y": 3 },
+                { "label": "R33 (F5,B3)", "x": 9, "y": 3 },
+                { "label": "R34 (B1,B3)", "x": 10, "y": 4 },
+                { "label": "R35 (F4,B3)", "x": 11, "y": 4 }
+            ]
+        }
+    }
+}
