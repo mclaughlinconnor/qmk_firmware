@@ -1,1 +1,3 @@
 SPLIT_KEYBOARD = yes
+STENO_ENABLE = yes
+STENO_PROTOCOL = geminipr
