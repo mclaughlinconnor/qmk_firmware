@@ -7,6 +7,9 @@
 
 #define SOFT_SERIAL_PIN D2
 
+#define SPLIT_USB_DETECT
+#define SPLIT_USB_TIMEOUT 2500
+
 #define MANUFACTURER    baygull
 #define PRODUCT         seagull
 
