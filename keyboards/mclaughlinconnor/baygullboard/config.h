@@ -34,3 +34,17 @@
 #define BOOTMAGIC_LITE_COLUMN_RIGHT 6
 
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+
+#define USE_VIM // comment this out to disable vim
+// #define VIM_FOR_MAC
+#define BETTER_VISUAL_MODE // takes more space but behaves more like vim
+#define VIM_I_TEXT_OBJECTS
+#define VIM_A_TEXT_OBJECTS
+#define VIM_G_MOTIONS
+#define VIM_COLON_CMDS
+#define VIM_PASTE_BEFORE
+#define VIM_REPLACE
+#define VIM_DOT_REPEAT
+#define VIM_W_BEGINNING_OF_WORD
+#define VIM_NUMBERED_JUMPS
+#define ONESHOT_VIM
