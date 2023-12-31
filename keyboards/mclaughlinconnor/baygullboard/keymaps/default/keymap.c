@@ -1,5 +1,10 @@
-#include QMK_KEYBOARD_H
 #include "keymap_steno.h"
+#include "qmk-vim/src/vim.h"
+#include QMK_KEYBOARD_H
+
+enum custom_keycodes {
+    VIM_TOG = SAFE_RANGE,
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_split_3x6_8(
@@ -13,7 +18,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO,       S(KC_1),     S(KC_2),     S(KC_3),     S(KC_4),     S(KC_5),           S(KC_6),     S(KC_7),     S(KC_8),     S(KC_9),     S(KC_0),     KC_NO,
         KC_NO,       KC_1,        KC_2,        KC_3,        KC_4,        KC_5,              KC_6,        KC_7,        KC_8,        KC_9,        KC_0,        KC_NO,
         KC_F1,       KC_F2,       KC_F3,       KC_F4,       KC_F5,       KC_F6,             KC_F7,       KC_F8,       KC_F9,       KC_F10,      KC_F11,      KC_F12,
-                                  KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,           KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_NO,
+                                  KC_TRNS,     KC_TRNS,     KC_TRNS,     KC_TRNS,           KC_TRNS,     KC_TRNS,     VIM_TOG,     KC_NO,
                                                             KC_TRNS,     KC_TRNS,           KC_TRNS,     KC_TRNS
     ),
     [2] = LAYOUT_split_3x6_8(
@@ -35,3 +40,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Add double tap keys to go to weird layers like Vim or F keys
 // Could also add layer switches to number layer so two keys are required to be pressed in a certain order
 //   Use escape to go back again
+
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    // Process case modes
+    if (!process_vim_mode(keycode, record)) {
+        return false;
+    }
+
+    switch (keycode) {
+        case VIM_TOG:
+            if (record->event.pressed) {
+                toggle_vim_mode();
+            }
+            return false;
+        default:
+            return true;
+    }
+}
