@@ -7,14 +7,6 @@
 
 #define SOFT_SERIAL_PIN D2
 
-#define SPLIT_USB_DETECT
-#define SPLIT_USB_TIMEOUT 10000
-
-#define SPLIT_WATCHDOG_ENABLE
-#define SPLIT_WATCHDOG_TIMEOUT 3000
-
-#define USB_SUSPEND_WAKEUP_DELAY 500
-
 #define MANUFACTURER    baygull
 #define PRODUCT         seagull
 
