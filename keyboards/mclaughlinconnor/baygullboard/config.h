@@ -3,9 +3,10 @@
 
 #pragma once
 
-#define EE_HANDS
 
+#define EE_HANDS
 #define SOFT_SERIAL_PIN D2
+#define SPLIT_USB_DETECT
 
 #define MANUFACTURER    baygull
 #define PRODUCT         seagull
