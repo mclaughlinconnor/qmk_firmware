@@ -2,8 +2,19 @@
 #include "qmk-vim/src/vim.h"
 #include QMK_KEYBOARD_H
 
+// Mouse jiggler
+// https://www.reddit.com/r/olkb/comments/t4imri/comment/hz2w67i/?context=3
+bool no_sleep_enabled = false;
+static uint16_t no_sleep_timer;
+
+void no_sleep_enable(void) {
+  no_sleep_timer = timer_read();
+  no_sleep_enabled = !no_sleep_enabled;
+}
+
 enum custom_keycodes {
-    VIM_TOG = SAFE_RANGE,
+    NO_SLEEP = SAFE_RANGE,
+    VIM_TOG,
 };
 
 enum layers {
@@ -67,6 +78,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 
     switch (keycode) {
+        case NO_SLEEP:
+            if (record->event.pressed) {
+                SEND_STRING("No sleep: ");
+                SEND_STRING(no_sleep_enabled ? "on" : "off");
+                no_sleep_enable();
+            }
+            return false;
         case VIM_TOG:
             if (record->event.pressed) {
                 toggle_vim_mode();
@@ -83,4 +101,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 //     debug_keyboard=true;
 //     debug_mouse=true;
 // }
+
+void matrix_scan_user(void) {
+    if (no_sleep_enabled && timer_elapsed(no_sleep_timer) > 59000) {
+        SEND_STRING(SS_TAP(X_F13));
+        no_sleep_timer = timer_read();
+    };
 }
