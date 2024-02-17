@@ -27,6 +27,9 @@
 
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 
+#define TAPPING_TERM 150
+#define PERMISSIVE_HOLD
+
 #define USE_VIM // comment this out to disable vim
 // #define VIM_FOR_MAC
 #define BETTER_VISUAL_MODE // takes more space but behaves more like vim
