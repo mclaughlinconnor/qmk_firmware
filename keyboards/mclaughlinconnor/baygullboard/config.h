@@ -3,6 +3,7 @@
 
 #pragma once
 
+#define MACOS 1
 
 #define EE_HANDS
 #define SOFT_SERIAL_PIN D2
@@ -32,7 +33,6 @@
 #define PERMISSIVE_HOLD
 
 #define USE_VIM // comment this out to disable vim
-// #define VIM_FOR_MAC
 #define BETTER_VISUAL_MODE // takes more space but behaves more like vim
 #define VIM_I_TEXT_OBJECTS
 #define VIM_A_TEXT_OBJECTS
@@ -44,3 +44,7 @@
 #define VIM_W_BEGINNING_OF_WORD
 #define VIM_NUMBERED_JUMPS
 #define ONESHOT_VIM
+
+#if MACOS
+  #define VIM_FOR_MAC
+#endif
