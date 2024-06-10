@@ -36,10 +36,10 @@ enum layers {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT_split_3x6_8(
-        KC_TAB,      KC_Q,        KC_W,        KC_E,        KC_R,        KC_T,              KC_Y,        KC_U,        KC_I,        KC_O,        KC_P,        KC_BSPC,
+        KC_TAB,      KC_Q,        KC_W,        KC_E,        KC_R,        KC_T,              KC_Y,        KC_U,        KC_I,        KC_O,        KC_P,        S(KC_SCLN),
         KC_ESC,      KC_A,        KC_S,        KC_D,        KC_F,        KC_G,              KC_H,        KC_J,        KC_K,        KC_L,        KC_SCLN,     KC_QUOT,
         KC_NUBS,     KC_Z,        KC_X,        KC_C,        KC_V,        KC_B,              KC_N,        KC_M,        KC_COMM,     KC_DOT,      KC_SLSH,     KC_NUHS,
-                                  MO(1),       KC_LSFT,     SPC_NAV,     KC_LCTL,           KC_RCTL,     BSPC_SYM,    KC_RSFT,     MO(2),
+                                  MO(1),       KC_LSFT,     KC_SPC,      KC_LCTL,           KC_RCTL,     BSPC_SYM,    KC_RSFT,     MO(2),
                                                             KC_LGUI,     KC_LALT,           KC_ENT,      KC_PSCR
         ),
     [_NUM] = LAYOUT_split_3x6_8(
@@ -70,6 +70,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                   KC_NO,       STN_A,       STN_O,       KC_NO,             KC_NO,       STN_E,       STN_U,       KC_NO,
                                                             KC_NO,       KC_NO,             KC_NO,       KC_NO
   )
+};
+
+#define COMBO_LEN 6
+
+const uint16_t PROGMEM numbers_combo[] = {KC_RCTL, KC_ENT, COMBO_END};
+combo_t key_combos[] = {
+    COMBO(numbers_combo, MO(1))
 };
 
 // Add double tap keys to go to weird layers like Vim or F keys
