@@ -5,6 +5,8 @@
 
 #define MACOS 1
 
+#define SPLIT_WATCHDOG_TIMEOUT 5000
+#define SPLIT_USB_TIMEOUT 1000
 #define EE_HANDS
 #define SOFT_SERIAL_PIN D2
 #define SPLIT_USB_DETECT

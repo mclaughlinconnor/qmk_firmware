@@ -100,16 +100,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 if (get_mods() & MOD_BIT(KC_LGUI)) {
                     unregister_code(KC_LGUI);
                     register_code(KC_LALT);
-                    register_code(KC_BSPACE);
-                    unregister_code(KC_BSPACE);
+                    register_code(KC_BSPC);
+                    unregister_code(KC_BSPC);
                     unregister_code(KC_LALT);
                     register_code(KC_LGUI);
                     return false;
                 } else if (get_mods() & MOD_BIT(KC_LALT)) {
                     unregister_code(KC_LALT);
                     register_code(KC_LGUI);
-                    register_code(KC_BSPACE);
-                    unregister_code(KC_BSPACE);
+                    register_code(KC_BSPC);
+                    unregister_code(KC_BSPC);
                     unregister_code(KC_LGUI);
                     register_code(KC_LALT);
                     return false;
