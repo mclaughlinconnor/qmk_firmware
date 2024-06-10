@@ -2,6 +2,7 @@
 #include "qmk-vim/src/vim.h"
 #include QMK_KEYBOARD_H
 #include "print.h"
+#include "sendstring_uk.h"
 
 // Mouse jiggler
 // https://www.reddit.com/r/olkb/comments/t4imri/comment/hz2w67i/?context=3
@@ -16,6 +17,9 @@ void no_sleep_enable(void) {
 enum custom_keycodes {
     NO_SLEEP = SAFE_RANGE,
     VIM_TOG,
+    MERGE,
+    STAGING,
+    DEPLOY,
 };
 
 enum layers {
@@ -39,9 +43,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                             KC_LGUI,     KC_LALT,           KC_ENT,      KC_PSCR
         ),
     [_NUM] = LAYOUT_split_3x6_8(
-        KC_F7,       KC_F8,       KC_F9,       KC_F10,      KC_F11,      KC_F12,            KC_6,        KC_7,        KC_8,        KC_9,        KC_0,        XXXXXXX,
-        KC_F1,       KC_F2,       KC_F3,       KC_F4,       KC_F5,       KC_F6,             KC_1,        KC_2,        KC_3,        KC_4,        KC_5,        XXXXXXX,
-        XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,           XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,
+        KC_F7,       KC_F8,       KC_F9,       KC_F10,      KC_F11,      KC_F12,            KC_6,        KC_7,        KC_8,        KC_9,        KC_0,        MERGE,
+        KC_F1,       KC_F2,       KC_F3,       KC_F4,       KC_F5,       KC_F6,             KC_1,        KC_2,        KC_3,        KC_4,        KC_5,        STAGING,
+        XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,           XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     DEPLOY,
                                   _______,     _______,     _______,     _______,           _______,     _______,     VIM_TOG,     NO_SLEEP,
                                                             _______,     _______,           _______,     _______
     ),
@@ -123,6 +127,22 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case VIM_TOG:
             if (record->event.pressed) {
                 toggle_vim_mode();
+            }
+            return false;
+
+        case MERGE:
+            if (record->event.pressed) {
+                SEND_STRING("/approve \n/merge");
+            }
+            return false;
+        case STAGING:
+            if (record->event.pressed) {
+                SEND_STRING("/unlabel ~\"under MR review\" \n/label ~\"Test on staging\" \n/close");
+            }
+            return false;
+        case DEPLOY:
+            if (record->event.pressed) {
+                SEND_STRING("/unlabel ~\"under MR review\" \n/label ~\"Added to the deploy doc\" \n/close");
             }
             return false;
         default:
