@@ -1,6 +1,7 @@
 #include "keymap_steno.h"
 #include "qmk-vim/src/vim.h"
 #include QMK_KEYBOARD_H
+#include "print.h"
 
 // Mouse jiggler
 // https://www.reddit.com/r/olkb/comments/t4imri/comment/hz2w67i/?context=3
@@ -41,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_F7,       KC_F8,       KC_F9,       KC_F10,      KC_F11,      KC_F12,            KC_6,        KC_7,        KC_8,        KC_9,        KC_0,        XXXXXXX,
         KC_F1,       KC_F2,       KC_F3,       KC_F4,       KC_F5,       KC_F6,             KC_1,        KC_2,        KC_3,        KC_4,        KC_5,        XXXXXXX,
         XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,           XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,     XXXXXXX,
-                                  _______,     _______,     _______,     _______,           _______,     _______,     VIM_TOG,     _______,
+                                  _______,     _______,     _______,     _______,           _______,     _______,     VIM_TOG,     NO_SLEEP,
                                                             _______,     _______,           _______,     _______
     ),
     [_SYM] = LAYOUT_split_3x6_8(
@@ -71,6 +72,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Could also add layer switches to number layer so two keys are required to be pressed in a certain order
 //   Use escape to go back again
 
+#define MODS_SHIFT_MASK  (MOD_BIT(KC_LSHIFT)|MOD_BIT(KC_RSHIFT))
+#define MODS_CTRL_MASK  (MOD_BIT(KC_LCTL)|MOD_BIT(KC_RCTRL))
+#define MODS_ALT_MASK  (MOD_BIT(KC_LALT)|MOD_BIT(KC_RALT))
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // Process case modes
     if (!process_vim_mode(keycode, record)) {
@@ -78,11 +83,41 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
 
     switch (keycode) {
+        #if MACOS
+        case BSPC_SYM:
+            if (record->event.pressed) {
+                if (get_mods() & MOD_BIT(KC_LGUI)) {
+                    unregister_code(KC_LGUI);
+                    register_code(KC_LALT);
+                    register_code(KC_BSPACE);
+                    unregister_code(KC_BSPACE);
+                    unregister_code(KC_LALT);
+                    register_code(KC_LGUI);
+                    return false;
+                } else if (get_mods() & MOD_BIT(KC_LALT)) {
+                    unregister_code(KC_LALT);
+                    register_code(KC_LGUI);
+                    register_code(KC_BSPACE);
+                    unregister_code(KC_BSPACE);
+                    unregister_code(KC_LGUI);
+                    register_code(KC_LALT);
+                    return false;
+                }
+            }
+            break;
+        #endif
+
         case NO_SLEEP:
             if (record->event.pressed) {
-                SEND_STRING("No sleep: ");
-                SEND_STRING(no_sleep_enabled ? "on" : "off");
                 no_sleep_enable();
+
+                SEND_STRING("No sleep: ");
+
+                if (no_sleep_enabled) {
+                    SEND_STRING("on");
+                } else {
+                    SEND_STRING("off");
+                }
             }
             return false;
         case VIM_TOG:
@@ -93,6 +128,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         default:
             return true;
     }
+
+    return true;
 }
 
 // void keyboard_post_init_user(void) {
