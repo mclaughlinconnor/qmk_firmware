@@ -11,9 +11,6 @@
 #define SOFT_SERIAL_PIN D2
 #define SPLIT_USB_DETECT
 
-#define MANUFACTURER    baygull
-#define PRODUCT         seagull
-
 #define MATRIX_ROWS 4 * 2  //double for split
 #define MATRIX_ROW_PINS { D4, C6, D7, E6 }
 #define MATRIX_COLS 6

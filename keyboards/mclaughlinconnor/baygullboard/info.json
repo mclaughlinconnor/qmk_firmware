@@ -2,6 +2,8 @@
     "keyboard_name": "mclaughlinconnor/baygullboard",
     "maintainer": "mclaughlinconnor",
     "bootloader": "caterina",
+    "manufacturer": "baygull",
+    "product": "seagull",
     "features": {
         "bootmagic": true,
         "command": false,
@@ -60,7 +62,7 @@
                 { "label": "R22 (C6,B1)", "x": 8, "y": 2 },
                 { "label": "R23 (D4,B1)", "x": 9, "y": 2 },
                 { "label": "R24 (D0,B1)", "x": 10, "y": 2 },
-                { "label": "R25 (D1,B1)", "x": 11, "y": 2 }
+                { "label": "R25 (D1,B1)", "x": 11, "y": 2 },
 
                 { "label": "L30 (F7,B3)", "x": 3, "y": 3 },
                 { "label": "L31 (F6,B3)", "x": 4, "y": 3 },
