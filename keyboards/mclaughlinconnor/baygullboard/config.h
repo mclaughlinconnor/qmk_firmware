@@ -3,7 +3,7 @@
 
 #pragma once
 
-#define MACOS 1
+#define MACOS 0
 
 #define SPLIT_WATCHDOG_TIMEOUT 5000
 #define SPLIT_USB_TIMEOUT 1000
@@ -30,6 +30,9 @@
 
 #define TAPPING_TERM 150
 #define PERMISSIVE_HOLD
+
+#define COMBO_STRICT_TIMER
+#define COMBO_TERM 20
 
 #define USE_VIM // comment this out to disable vim
 #define BETTER_VISUAL_MODE // takes more space but behaves more like vim
