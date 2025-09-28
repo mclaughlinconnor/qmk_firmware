@@ -246,7 +246,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         case APPROVE_QUOTE:
             if (record->event.pressed) {
-                SEND_STRING("/unlabel ~\"Quoted and waiting for final approval\" \n/label ~Quoted \n/assign @");
+                SEND_STRING("/unlabel ~\"Quoted and waiting for final approval\" \n/label ~\"Quoted\" \n/assign @");
             }
             return false;
         case COLON:
